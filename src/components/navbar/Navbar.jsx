@@ -6,6 +6,7 @@ import Link from 'next/link'
 import person from '../../../public/person.jpg'
 import Image from 'next/image'
 import {AiOutlineClose} from 'react-icons/ai'
+import {signIn, signOut} from 'next-auth/react'
 
 
 const Navbar = () => {
@@ -20,6 +21,9 @@ const Navbar = () => {
   const handleHideDropDown = () => {
     setShowDropDown(prev => false)
   }
+
+
+
   const loggedIn = false
   return (
     <div className={classes.container}>
@@ -35,16 +39,16 @@ const Navbar = () => {
                         {
                             showDropDown && (
                                 <div className={classes.dropdown}>
-                                    <AiOutlineClose className={classes.closeIcon} onClick={handleHideDropDown}/>
-                                    <button onClick={handleHideDropDown} className={classes.logout}>Logout</button>
-                                    <Link  className={classes.create} onClick={handleHideDropDown} href='/create-post'>Create</Link>
+                                    <AiOutlineClose className={classes.closeIcon} onClick={() => handleHideDropDown()}/>
+                                    <button onClick={() => {signOut();handleHideDropDown()}} className={classes.logout}>Logout</button>
+                                    <Link  className={classes.create} onClick={() => handleHideDropDown()} href='/create-post'>Create</Link>
                                 </div>
                             )
                         }
                     </div>
                 ) : (
                     <>
-                        <button className={classes.login}>Log in</button>
+                        <button onClick={() => {signIn()}} className={classes.login}>Log in</button>
                         <Link href='/register'>Register</Link>
                     </>
                 )}
