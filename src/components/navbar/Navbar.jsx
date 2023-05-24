@@ -35,13 +35,13 @@ const Navbar = () => {
                 session?.user
                 ? (
                     <div>
-                        <Image onClick= {handleShowDropDown} src={person} width='45' height='45'/>
+                        <Image onClick= {handleShowDropDown} src={person} width='45' height='45' alt=""/>
                         {
                             showDropDown && (
                                 <div className={classes.dropdown}>
                                     <AiOutlineClose className={classes.closeIcon} onClick={() => handleHideDropDown()}/>
                                     <button onClick={() => {signOut();handleHideDropDown()}} className={classes.logout}>Logout</button>
-                                    <Link  className={classes.create} onClick={() => handleHideDropDown()} href='/create-post'>Create</Link>
+                                    <Link  className={classes.create} onClick={() => handleHideDropDown()} href='/create-blog'>Create</Link>
                                 </div>
                             )
                         }

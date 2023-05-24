@@ -11,7 +11,7 @@ const BlogCard = ({blog: {title, desc, img}}) => {
     <div className={classes.container}>
       <div className={classes.wrapper}>
         <Link className={classes.imgContainer} href='/'>
-          <Image src={img} width='350' height='350'/>
+          <Image src={img} width='350' height='350' alt=""/>
         </Link>
 
         <div className={classes.blogData}>
